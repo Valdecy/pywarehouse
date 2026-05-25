@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyWarehouse-routing"
+version = "1.1.4"
+description = "Graph-based warehouse order-picking layouts, heuristics, and self-contained web visualization."
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [{ name = "Valdecy Pereira" }]
+license = { text = "MIT" }
+keywords = ["warehouse", "order picking", "routing", "s-shape", "largest gap", "svg", "logistics", "reinforcement learning", "q-learning"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Office/Business",
+]
+dependencies = [
+    "pandas>=1.5",
+]
+
+[project.optional-dependencies]
+plotly = ["plotly>=5.0"]
+dev = ["pytest>=7", "build>=1.0"]
+
+[tool.setuptools.packages.find]
+include = ["pywarehouse*"]
