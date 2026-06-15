@@ -178,14 +178,14 @@ cfg_q = QLearningConfig(
 )
 
 result_q = TabularQLearningRouter(router, cfg_q).train()
-route_q  = result.route
+route_q  = result_q.route
 
 print(route_q.terminal_sequence)
 print(route_q.total_distance)
 print(result_q.metadata)
 
 cfg_s = QLearningConfig(
-    algorithm       = "sarsa"
+    algorithm       = "sarsa",
     episodes        = 30000,
     alpha           = 0.25,
     gamma           = 1.0,
@@ -197,7 +197,7 @@ cfg_s = QLearningConfig(
 )
 
 result_s = TabularQLearningRouter(router, cfg_s).train()
-route_s  = result.route
+route_s  = result_s.route
 
 print(route_s.terminal_sequence)
 print(route_s.total_distance)
