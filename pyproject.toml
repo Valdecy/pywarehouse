@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pyWarehouse-routing"
-version = "1.1.4"
+version = "1.1.5"
 description = "Graph-based warehouse order-picking layouts, heuristics, and self-contained web visualization."
 readme = "README.md"
 requires-python = ">=3.9"
@@ -21,6 +21,11 @@ classifiers = [
 dependencies = [
     "pandas>=1.5",
 ]
+
+[project.urls]
+Homepage = "https://github.com/Valdecy/pywarehouse"
+Repository = "https://github.com/Valdecy/pywarehouse"
+Issues = "https://github.com/Valdecy/pywarehouse/issues"
 
 [project.optional-dependencies]
 plotly = ["plotly>=5.0"]
