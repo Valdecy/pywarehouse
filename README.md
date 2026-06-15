@@ -160,12 +160,13 @@ action = next unpicked product, or FINISH after all products are picked
 reward = - graph shortest-path distance
 ```
 
-### Q-learning
+### Q-learning / SARSA
 
 ```python
 from pywarehouse import QLearningConfig, TabularQLearningRouter
 
-cfg = QLearningConfig(
+cfg_q = QLearningConfig(
+    algorithm       = "q_learning",
     episodes        = 30000,
     alpha           = 0.25,
     gamma           = 1.0,
@@ -176,19 +177,38 @@ cfg = QLearningConfig(
     route_selection = "best", # "best" or "greedy"
 )
 
-result = TabularQLearningRouter(router, cfg).train()
-route  = result.route
+result_q = TabularQLearningRouter(router, cfg_q).train()
+route_q  = result.route
 
-print(route.terminal_sequence)
-print(route.total_distance)
-print(result.metadata)
+print(route_q.terminal_sequence)
+print(route_q.total_distance)
+print(result_q.metadata)
+
+cfg_s = QLearningConfig(
+    algorithm       = "sarsa"
+    episodes        = 30000,
+    alpha           = 0.25,
+    gamma           = 1.0,
+    epsilon         = 1.0,
+    epsilon_min     = 0.02,
+    epsilon_decay   = 0.9995,
+    seed            = 11,
+    route_selection = "best", # "best" or "greedy"
+)
+
+result_s = TabularQLearningRouter(router, cfg_s).train()
+route_s  = result.route
+
+print(route_s.terminal_sequence)
+print(route_s.total_distance)
+print(result_s.metadata)
 ```
 
 ### Direct Router API
 
 ```python
-route_q = router.solve(strategy = "q_learning", rl_config = cfg)
-route_s = router.solve(strategy = "sarsa",      rl_config = cfg)
+route_q = router.solve(strategy = "q_learning", rl_config = cfg_q)
+route_s = router.solve(strategy = "sarsa",      rl_config = cfg_s)
 ```
 
 ### Waypoint Transition Table
