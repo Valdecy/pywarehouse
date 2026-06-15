@@ -6,7 +6,7 @@ from .routing import Router
 from .rl import QLearningConfig, TabularPickingEnv, TabularQLearningRouter, TabularRLResult, learn_tabular_route
 from .web import HtmlViewer, Plotter, export_html, make_item_labels
 
-__version__ = "1.1.4"
+__version__ = "1.1.5"
 
 __all__ = [
     "Depot",
